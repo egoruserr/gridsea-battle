@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', 'Inter', monospace;
+}
+
+.app {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.left-panel {
+    flex: 1;
+    background: #f7efdf;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 24px 28px 20px 28px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    flex-shrink: 0;
+}
+
+.logo {
+    background: #e8d5b5;
+    padding: 8px 18px;
+    border-radius: 48px;
+    font-weight: bold;
+    color: #4a3728;
+}
+
+.level-control {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #e8d5b5;
+    padding: 6px 20px;
+    border-radius: 48px;
+}
+
+.level-arrow {
+    background: #c9b28b;
+    border: none;
+    font-size: 1.2rem;
+    padding: 4px 12px;
+    border-radius: 30px;
+    cursor: pointer;
+    color: #4a3728;
+}
+
+.level-arrow:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.level-display {
+    background: #4a3728;
+    color: #f7efdf;
+    padding: 4px 16px;
+    border-radius: 32px;
+    font-weight: 600;
+}
+
+.theory-block, .task-block {
+    background: #ecdbba;
+    border-radius: 20px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    border-left: 6px solid #b59a6b;
+    flex-shrink: 0;
+}
+
+.theory-block h3, .task-block h3 {
+    color: #4a3728;
+    margin-bottom: 12px;
+}
+
+.editor-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0 12px;
+}
+
+.css-editor {
+    flex: 1;
+    width: 100%;
+    background: #2d2d2d;
+    color: #eaeaea;
+    border: 1px solid #b59a6b;
+    border-radius: 16px;
+    padding: 14px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    resize: none;
+    outline: none;
+}
+
+.button-group {
+    display: flex;
+    gap: 14px;
+    margin: 8px 0 12px;
+    flex-shrink: 0;
+}
+
+.btn {
+    border: none;
+    padding: 10px 24px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-check {
+    background: #8b9a6e;
+    color: white;
+}
+
+.btn-reset {
+    background: #c17a4c;
+    color: white;
+}
+
+.message-box {
+    background: #f2e4d2;
+    border-radius: 24px;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    color: #5c3e2a;
+    border-left: 4px solid #b59a6b;
+    margin: 6px 0;
+    flex-shrink: 0;
+}
+
+.hint-button {
+    background: #e6c37e;
+    color: #3e2a1f;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.hint-text {
+    background: #f2e4d2;
+    padding: 12px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    border-left: 4px solid #e6c37e;
+}
+
+.right-panel {
+    flex: 1;
+    background: linear-gradient(145deg, #3678a0 0%, #1e4f6b 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.game-grid {
+    width: 100%;
+    max-width: 620px;
+    aspect-ratio: 1 / 1;
+    background-color: rgba(255, 248, 225, 0.08);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 6px;
+    padding: 12px;
+    border-radius: 32px;
+    position: relative;
+}
+
+.grid-cell {
+    background-color: rgba(255, 248, 225, 0.2);
+    border-radius: 14px;
+    border: 1px solid #e9d6a7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.grid-cell::after {
+    content: attr(data-coord);
+    position: absolute;
+    bottom: 3px;
+    right: 6px;
+    font-size: 0.55rem;
+    color: rgba(255, 250, 210, 0.9);
+}
+
+.ship {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: rgba(210, 170, 110, 0.7);
+    border-radius: 12px;
+}
+
+.test-ship {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.grid-cell.ship {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.grid-cell.ship-1x1 {
+    background-image: url('images/ship-1x1.png');
+}
+
+.grid-cell.ship-2x1-h {
+    background-image: url('images/ship-2x1-h.png');
+    background-size: 95% 70%;
+}
+
+.grid-cell.ship-1x2-v {
+    background-image: url('images/ship-1x2-v.png');
+    background-size: 70% 95%;
+}
+
+.grid-cell.explosion {
+    background-image: url('images/explosion.png');
+    background-size: cover;
+    z-index: 10;
+}
+
+.ship {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}

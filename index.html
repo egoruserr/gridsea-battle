@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>GridSea Battle — учим CSS Grid</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="app">
+        <div class="left-panel">
+            <div class="top-bar">
+                <div class="logo">⚓ GRIDSEA BATTLE</div>
+                <div class="level-control">
+                    <button id="prevBtn" class="level-arrow" disabled>◀</button>
+                    <span id="levelDisplay" class="level-display">1 / 5</span>
+                    <button id="nextBtn" class="level-arrow" disabled>▶</button>
+                </div>
+            </div>
+
+            <div class="theory-block" id="theoryBlock">
+                <h3>📘 Теория</h3>
+                <div id="theoryText"></div>
+            </div>
+
+            <div class="task-block" id="taskBlock">
+                <h3>📌 Задание</h3>
+                <div id="taskText"></div>
+            </div>
+
+            <div class="editor-block">
+                <textarea id="cssEditor" class="css-editor" placeholder="Введите ваш CSS код здесь..."></textarea>
+            </div>
+
+            <div class="button-group">
+                <button id="checkBtn" class="btn btn-check">✅ Проверить</button>
+                <button id="resetBtn" class="btn btn-reset">🔄 Сбросить</button>
+            </div>
+
+            <div id="messageBox" class="message-box">💡 Введи CSS и нажми «Проверить»</div>
+            <div id="hintContainer"></div>
+        </div>
+
+        <div class="right-panel">
+            <div class="game-grid" id="gameGrid"></div>
+        </div>
+    </div>
+
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/ui/messageSystem.js"></script>
+    <script src="js/ui/hintSystem.js"></script>
+    <script src="js/core/gridRenderer.js"></script>
+    <script src="js/core/validator.js"></script>
+    <script src="js/core/levelManager.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
