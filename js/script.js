@@ -2,7 +2,7 @@
 
 // Глобальные переменные (доступны всем модулям)
 let currentLevelId = 1;
-let completedLevels = [];
+let completedLevels = [1,2,3,4,5,6,7];
 let failedAttempts = 0;
 let hintUsed = false;
 
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (nextBtn) {
         nextBtn.onclick = () => {
-            if (currentLevelId < 5 && typeof loadLevel === 'function') {
+            if (currentLevelId < 8 && typeof loadLevel === 'function') {
                 const maxUnlocked = Math.max(1, ...completedLevels, 1);
                 if (currentLevelId + 1 <= maxUnlocked + 1) {
                     loadLevel(currentLevelId + 1);
