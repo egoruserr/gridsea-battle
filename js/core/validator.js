@@ -14,6 +14,11 @@ function checkTemplateStructure(css) {
     return /grid-template-columns/i.test(clean) && /grid-template-rows/i.test(clean);
 }
 
+function checkGap(css) {
+    const clean = css.replace(/\/\*[\s\S]*?\*\//g, '');
+    return /gap\s*:\s*\d+px/.test(clean);
+}
+
 function checkExplosionZone(zone) {
     if (!zone || zone.length === 0) return true;
     for (let coord of zone) {
@@ -58,6 +63,9 @@ async function validateCSS(css, expectedShips, checkType, explosionZone, current
         }
         else if (checkType === "templateStructure") {
             return { success: checkTemplateStructure(css), actualShips: [] };
+        }
+        else if (checkType === "gapCheck") {
+            return { success: checkGap(css), actualShips: [] };
         }
         return { success: false, actualShips: [] };
     }

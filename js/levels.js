@@ -1,4 +1,4 @@
-// levels.js — 8 рабочих уровней с улучшенными формулировками
+// levels.js — 8 рабочих уровней (без gap и без уровня 8)
 
 const LEVELS = [
     { 
@@ -63,23 +63,23 @@ const LEVELS = [
     
     { 
         id: 7, 
-        theory: "🔹 Можно размещать несколько кораблей с разными классами.<br>🔹 Каждый класс позиционируется отдельно с помощью <code>grid-column</code> и <code>grid-row</code>.", 
-        task: "⚓ Размести два корабля:<br>• <strong>Горизонтальный двухклеточный корабль</strong> в клетках <strong>B1 и C1</strong><br>• <strong>Одноклеточный корабль</strong> в клетке <strong>D4</strong>", 
-        initialCode: ".ship-horizontal {\n  \n}\n.ship-single {\n  \n}", 
-        expectedShips: ["B1","C1","D4"], 
+        theory: "🔹 <code>minmax()</code> задаёт минимальную и максимальную ширину колонки.<br>🔹 <code>repeat(6, minmax(70px, 1fr))</code> — 6 колонок, каждая от 70px до 1fr.", 
+        task: "⚓ Сделай грид с колонками от <strong>70px до 1fr</strong>. Размести корабли в <strong>A1 и F1</strong>.", 
+        initialCode: ".game-grid {\n  display: grid;\n  \n}\n.ship-a1 { }\n.ship-f1 { }", 
+        expectedShips: ["A1","F1"], 
         checkType: "shipsPlacement", 
-        hint: ".ship-horizontal { grid-column: 2 / 4; grid-row: 1 / 2; } .ship-single { grid-column: 4 / 5; grid-row: 4 / 5; }" 
+        hint: ".game-grid { grid-template-columns: repeat(6, minmax(70px, 1fr)); } .ship-a1 { grid-column: 1 / 2; grid-row: 1 / 2; } .ship-f1 { grid-column: 6 / 7; grid-row: 1 / 2; }" 
     },
     
-{ 
-    id: 8, 
-    theory: "🔹 Можно создавать корабли разной формы, комбинируя <code>span</code> и числовые значения.<br>🔹 Главное — правильно указать начальную позицию и растяжение.", 
-    task: "⚓ Размести три корабля:<br>• <strong>Одноклеточный корабль</strong> в клетке <strong>A1</strong><br>• <strong>Вертикальный корабль</strong> в клетках <strong>C3 и C4</strong><br>• <strong>Горизонтальный корабль</strong> в клетках <strong>E5 и F5</strong>", 
-    initialCode: ".ship-a1 { }\n.ship-c { }\n.ship-e { }", 
-    expectedShips: ["A1","C3","C4","E5","F5"], 
-    checkType: "shipsPlacement", 
-    hint: ".ship-a1 { grid-column: 1 / 2; grid-row: 1 / 2; } .ship-c { grid-column: 3 / 4; grid-row: 3 / 5; } .ship-e { grid-column: 5 / 7; grid-row: 5 / 6; }" 
-}
+    { 
+        id: 8, 
+        theory: "🔹 Можно создавать корабли разной формы, комбинируя <code>span</code> и числовые значения.<br>🔹 Главное — правильно указать начальную позицию и растяжение.", 
+        task: "⚓ Размести три корабля:<br>• <strong>Одноклеточный корабль</strong> в клетке <strong>A1</strong><br>• <strong>Вертикальный корабль</strong> в клетках <strong>C3 и C4</strong><br>• <strong>Горизонтальный корабль</strong> в клетках <strong>E5 и F5</strong>", 
+        initialCode: ".ship-a1 { }\n.ship-c { }\n.ship-e { }", 
+        expectedShips: ["A1","C3","C4","E5","F5"], 
+        checkType: "shipsPlacement", 
+        hint: ".ship-a1 { grid-column: 1 / 2; grid-row: 1 / 2; } .ship-c { grid-column: 3 / 4; grid-row: 3 / 5; } .ship-e { grid-column: 5 / 7; grid-row: 5 / 6; }" 
+    }
 ];
 
 console.log("levels.js загружен, количество уровней:", LEVELS.length);

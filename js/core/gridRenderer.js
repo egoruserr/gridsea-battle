@@ -120,7 +120,7 @@ function renderShips(shipCoordinates) {
         shipElement.style.alignItems = "center";
         shipElement.style.justifyContent = "center";
         shipElement.style.borderRadius = "12px";
-        shipElement.style.zIndex = "10";
+        shipElement.style.zIndex = "1";
         shipElement.style.pointerEvents = "none";
         
         const img = document.createElement("img");

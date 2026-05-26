@@ -22,6 +22,12 @@ function loadLevel(id) {
     
     applyCSS(level.initialCode);
     clearGridVisuals();
+    
+    // Если это уровень со взрывами, отрисуем корабли из expectedShips
+    if (level.checkType === "explosionLevel" && level.expectedShips) {
+        renderShips(level.expectedShips);
+    }
+    
     showMessage(`📌 Уровень ${id}. Выполни задание.`);
     updateLevelButtons();
     resetHint();
@@ -44,6 +50,11 @@ function resetCurrentLevel() {
         if (editor) editor.value = level.initialCode;
         applyCSS(level.initialCode);
         clearGridVisuals();
+        
+        if (level.checkType === "explosionLevel" && level.expectedShips) {
+            renderShips(level.expectedShips);
+        }
+        
         showMessage("🔄 Уровень сброшен");
         resetHint();
     }

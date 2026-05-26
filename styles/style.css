@@ -260,3 +260,9 @@ html, body {
     opacity: 0;
     pointer-events: none;
 }
+
+.explosion {
+  background: url('../images/explosion.png') center/cover;
+  width: 100%;
+  height: 100%;
+}
