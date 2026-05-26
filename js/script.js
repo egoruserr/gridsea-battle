@@ -1,16 +1,13 @@
 // script.js — только инициализация и глобальные переменные
 
-// Глобальные переменные (доступны всем модулям)
 let currentLevelId = 1;
-let completedLevels = [1,2,3,4,5,6,7];
+let completedLevels = [];
 let failedAttempts = 0;
 let hintUsed = false;
 
-// ========== ИНИЦИАЛИЗАЦИЯ ==========
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM загружен, инициализация...");
     
-    // Проверяем, что все модули загружены
     if (typeof buildGrid === 'undefined') {
         console.error("Ошибка: gridRenderer.js не загружен!");
         return;
@@ -24,13 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
-    // Строим сетку
     buildGrid();
-    
-    // Загружаем первый уровень
     loadLevel(1);
     
-    // Навешиваем обработчики
     const checkBtn = document.getElementById("checkBtn");
     const resetBtn = document.getElementById("resetBtn");
     const prevBtn = document.getElementById("prevBtn");

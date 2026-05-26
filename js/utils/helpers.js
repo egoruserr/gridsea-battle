@@ -1,25 +1,16 @@
-// helpers.js — только уникальные функции, которых нет в script.js
+// helpers.js — базовые утилиты
 
-// Создать невидимый тестовый элемент для проверки позиционирования
-function createTestShip() {
-    let testShip = document.getElementById("test-ship");
-    if (testShip) testShip.remove();
-    testShip = document.createElement("div");
-    testShip.id = "test-ship";
-    testShip.className = "test-ship";
-    testShip.textContent = "⛵";
-    
-    // Важно: добавляем ВНУТРЬ .game-grid, а не в body
-    const grid = document.getElementById("gameGrid");
-    if (grid) {
-        grid.appendChild(testShip);
-    } else {
-        document.body.appendChild(testShip);
-    }
-    return testShip;
+function colToLetter(col) {
+    return String.fromCharCode(65 + col);
 }
 
-function removeTestShip() {
-    const testShip = document.getElementById("test-ship");
-    if (testShip) testShip.remove();
+function applyCSS(cssText) {
+    let style = document.getElementById("dynamic-css");
+    if (style) style.remove();
+    if (cssText && cssText.trim() !== "") {
+        style = document.createElement("style");
+        style.id = "dynamic-css";
+        style.textContent = cssText;
+        document.head.appendChild(style);
+    }
 }
